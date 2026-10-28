@@ -323,14 +323,13 @@ footer { background: var(--ink); color: var(--hero-fg); border-top: 1px solid rg
     </div>
   </section>
 
-  <section class="reviews-band" id="avaliacoes" hidden>
+  <section class="reviews-band" id="avaliacoes">
     <div class="wrap section">
       <div style="text-align:center">
         <a class="rev-badge" href="https://maps.app.goo.gl/i4umUKo7Z147XV6P9" target="_blank" rel="noopener noreferrer">
           <svg class="gl" aria-hidden="true"><use href="#i-g"/></svg>
-          <b class="rev-num" data-t="nota">5,0</b>
           <span class="stars" aria-hidden="true" id="badge-stars"></span>
-          <span data-t="avBadge">31 avaliações</span>
+          <span data-t="avBadge">Avaliações no Google</span>
         </a>
         <h2 class="h2" style="margin-top:1.25rem" data-t="avTitulo">O que dizem os clientes</h2>
         <p class="lead" data-t="avLead">Avaliações reais de quem já tatuou com a Joana Chung, direto do Google.</p>
@@ -423,7 +422,11 @@ const site = {
   /* Avaliações do Google (texto original, em português). meses = há quantos meses.
      Para mostrar fotos: fotos: ["assets/avaliacao-nome-1.webp", ...] */
   avaliacoes: [
-    /* avaliações da Joana aqui */
+    { nome: "Marcia Vasconcellos", meses: 2, texto: "Conheci o trabalho da Joana através da pesquisa pelo Google e fiquei muito confiante com as avaliações positivas que li sobre o seu trabalho. A partir deste momento, resolvi fazer uma tatuagem com ela e confirmo aqui tudo de bom que havia lido sobre a Joana: uma profissional atenciosa, cuidadosa, experiente, caprichosa e muito competente. Estou muito satisfeita e feliz com a minha nova tatuagem e certamente retornarei para fazer novas. Recomendo a Joana de olhos fechados e se eu pudesse, daria mil estrelas para ela! Aproveito e destaco aqui a simpatia e educação de sua secretária Alessandra!!! Obrigada, Joana e Alessandra!!!!" },
+    { nome: "Natalia Anniboleti", meses: 2, texto: "A experiência foi ótima em todos as etapas. A assistente da Alessandra foi ótima para agendar minha sessão. A Joana nem se fala! Maravilhosa. Me deixou a vontade, e me deixou super feliz com a minha tatuagem. Inclusive que traço maravilhoso." },
+    { nome: "Glauce Rosadas", meses: 3, texto: "Maravilhosa!!! Atendimento nota mil!!!! Fiquei muito satisfeita com o resultado!!! Ja estou me programando, para novos retoques. Gratidão 🌻" },
+    { nome: "Ana Carolina Alves Francisco", meses: 8, texto: "Minha experiência foi incrível. Estou apaixonada pelo trabalho da Joana. Confiei nela de olhos fechados para fazer o meu projeto de reforma e criação da tatuagem. Extremamente educada e profissional. Fácil acesso, contato. Estúdio lindo, limpo e confortável. Bem localizado. Tudo o que eu buscava há alguns meses de procura por um bom tatuador. Ja estou pensando na próxima tattoo", fotos: ["assets/avaliacao-ana-carolina-antes-reforma-tatuagem-meier-rj.webp", "assets/avaliacao-ana-carolina-depois-reforma-tatuagem-meier-rj.webp"] },
+    { nome: "Fernanda Fernandes", meses: 9, texto: "Joana é uma excelente profissional, me tatuadora há anos. A sala dela e uma graça, limoa, organizada, bem iluminada e aconchegante. Super indico." },
   ],
   /* portfólio — descrições em TXT.*.portfolio, na mesma ordem (cada foto tem uma versão "-480" para celular) */
   portfolio: [
@@ -514,7 +517,7 @@ const TXT = {
       sobre1: "I'm Joana Chung, a tattoo artist specializing in colorful neo-traditional work, with a studio in Méier, Rio de Janeiro.",
       sobre2: "Every design is one of a kind, drawn from your idea and your story, with vivid colors, bold outlines and lots of detail.",
       sobre3: "Shall we turn your ideas into art together?",
-      nota: "5.0", avBadge: "31 reviews", avTitulo: "What clients say", avLead: "Real reviews from people who got tattooed by Joana Chung, straight from Google. (Reviews shown in their original Portuguese.)", avLink: "See all reviews on Google",
+      nota: "5.0", avBadge: "Google reviews", avTitulo: "What clients say", avLead: "Real reviews from people who got tattooed by Joana Chung, straight from Google. (Reviews shown in their original Portuguese.)", avLink: "See all reviews on Google",
       orcTitulo: "What is the average price of a tattoo with Joana Chung?",
       orcTexto: 'A tattoo with <strong>Joana Chung</strong> costs on average <strong class="nw">R$1,200 to R$3,500</strong> (Brazilian reais) <strong>per session</strong>.',
       orcSub: "Request your quote by signing up below",
@@ -565,7 +568,7 @@ const TXT = {
       sobre1: "Soy Joana Chung, tatuadora especializada en neotradicional a color, con estudio en Méier, Río de Janeiro.",
       sobre2: "Cada diseño es exclusivo, creado a partir de tu idea y tu historia, con colores vivos, contornos marcados y mucho detalle.",
       sobre3: "¿Transformamos juntos tus ideas en arte?",
-      nota: "5,0", avBadge: "31 reseñas", avTitulo: "Lo que dicen los clientes", avLead: "Reseñas reales de quienes ya se tatuaron con Joana Chung, directo de Google. (Reseñas en su portugués original.)", avLink: "Ver todas las reseñas en Google",
+      nota: "5,0", avBadge: "Reseñas de Google", avTitulo: "Lo que dicen los clientes", avLead: "Reseñas reales de quienes ya se tatuaron con Joana Chung, directo de Google. (Reseñas en su portugués original.)", avLink: "Ver todas las reseñas en Google",
       orcTitulo: "¿Cuál es el precio promedio de un tatuaje con Joana Chung?",
       orcTexto: 'Un tatuaje con <strong>Joana Chung</strong> cuesta en promedio <strong class="nw">R$1.200 a R$3.500</strong> (reales brasileños) <strong>por sesión</strong>.',
       orcSub: "Solicita tu presupuesto registrándote abajo",
