@@ -186,13 +186,23 @@ img { max-width: 100%; display: block; }
 .quote-box { max-width: 36rem; margin: 0 auto; }
 .lead-form { margin-top: 2rem; display: grid; gap: 1rem; }
 .field label { display: block; margin-bottom: .4rem; font-size: .8rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--hero-muted); }
-.field input {
+.field input, .field select, .field textarea {
   width: 100%; padding: .9rem 1.1rem; border: 1px solid rgb(255 255 255 / .2); border-radius: .6rem;
   background: rgb(255 255 255 / .06); color: #fff; font: inherit; font-size: 1rem; transition: border-color .2s, background .2s;
 }
-.field input::placeholder { color: rgb(255 255 255 / .4); }
-.field input:focus { outline: none; border-color: var(--gold); background: rgb(255 255 255 / .09); }
-.field input[aria-invalid="true"] { border-color: #ef6b6b; }
+.field input::placeholder, .field textarea::placeholder { color: rgb(255 255 255 / .4); }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--gold); background-color: rgb(255 255 255 / .09); }
+.field [aria-invalid="true"] { border-color: #ef6b6b; }
+.field select {
+  appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 2.75rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d6b25e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 1rem center; background-size: 1.1rem;
+}
+.field select:invalid { color: rgb(255 255 255 / .4); }
+.field select option { background: #1a1a1a; color: #fff; }
+.field textarea { min-height: 7rem; resize: vertical; line-height: 1.5; }
+.field-row { display: grid; gap: 1rem; }
+@media (min-width: 520px) { .field-row { grid-template-columns: 1fr 1fr; } }
 .field-err { margin-top: .35rem; font-size: .8rem; color: #ef9a9a; }
 .field-err:empty { display: none; }
 .arrow-down { display: inline-block; width: 1rem; height: 1rem; margin-left: .2rem; vertical-align: -.2em; color: var(--gold); animation: nudge 1.6s ease-in-out infinite; }
@@ -367,14 +377,40 @@ footer { background: var(--ink); color: var(--hero-fg); border-top: 1px solid rg
         <p class="lead" style="max-width:none;margin-top:.75rem"><span data-t="orcSub">Solicite seu orçamento se cadastrando abaixo</span> <svg class="arrow-down" aria-hidden="true"><use href="#i-down"/></svg></p>
         <form class="lead-form" id="lead-form" novalidate>
           <div class="field">
-            <label for="f-nome" data-t="fNome">Nome</label>
-            <input id="f-nome" name="nome" type="text" autocomplete="name" required maxlength="80" data-a="placeholder:fNomePh" placeholder="Seu nome completo" aria-describedby="e-nome">
+            <label for="f-nome" data-t="fNome">Seu nome</label>
+            <input id="f-nome" name="nome" type="text" autocomplete="name" required maxlength="80" data-a="placeholder:fNomePh" placeholder="Como posso te chamar?" aria-describedby="e-nome">
             <p class="field-err" id="e-nome" aria-live="polite"></p>
           </div>
           <div class="field">
-            <label for="f-tel" data-t="fTel">Telefone / WhatsApp</label>
+            <label for="f-tel" data-t="fTel">Seu WhatsApp</label>
             <input id="f-tel" name="telefone" type="tel" inputmode="numeric" autocomplete="tel-national" required maxlength="15" placeholder="(21) 99999-9999" aria-describedby="e-tel">
             <p class="field-err" id="e-tel" aria-live="polite"></p>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-local" data-t="fLocal">Local do corpo</label>
+              <select id="f-local" name="local" required aria-describedby="e-local" data-opts="local"></select>
+              <p class="field-err" id="e-local" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="f-tamanho" data-t="fTamanho">Tamanho aproximado</label>
+              <select id="f-tamanho" name="tamanho" required aria-describedby="e-tamanho" data-opts="tamanho"></select>
+              <p class="field-err" id="e-tamanho" aria-live="polite"></p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-estilo" data-t="fEstilo">Estilo da tatuagem</label>
+            <select id="f-estilo" name="estilo" required aria-describedby="e-estilo" data-opts="estilo"></select>
+            <p class="field-err" id="e-estilo" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="f-orcamento" data-t="fOrcamento">Qual o seu orçamento para essa tatuagem?</label>
+            <select id="f-orcamento" name="orcamento" required aria-describedby="e-orcamento" data-opts="orcamento"></select>
+            <p class="field-err" id="e-orcamento" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="f-ideia" data-t="fIdeia">Ideia da tatuagem</label>
+            <textarea id="f-ideia" name="ideia" rows="4" maxlength="1000" data-a="placeholder:fIdeiaPh" placeholder="Conte o que você imagina: tema, referências, significado..."></textarea>
           </div>
           <p class="form-ok" id="form-ok" role="status" hidden></p>
           <button type="submit" class="btn-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg><span data-t="orcBotao">Quero receber meu orçamento</span></button>
@@ -460,6 +496,40 @@ const site = {
   ],
 };
 
+/* opções do formulário: [valor enviado, PT, EN, ES] */
+const OPCOES = {
+  local: [
+    ["Braço", "Braço", "Arm", "Brazo"], ["Antebraço", "Antebraço", "Forearm", "Antebrazo"], ["Ombro", "Ombro", "Shoulder", "Hombro"],
+    ["Mão", "Mão", "Hand", "Mano"], ["Costas", "Costas", "Back", "Espalda"], ["Peito", "Peito", "Chest", "Pecho"],
+    ["Costela", "Costela", "Ribs", "Costillas"], ["Barriga", "Barriga", "Stomach", "Abdomen"], ["Coxa", "Coxa", "Thigh", "Muslo"],
+    ["Panturrilha / perna", "Panturrilha / perna", "Calf / leg", "Pantorrilla / pierna"], ["Pé / tornozelo", "Pé / tornozelo", "Foot / ankle", "Pie / tobillo"],
+    ["Pescoço", "Pescoço", "Neck", "Cuello"], ["Outro", "Outro", "Other", "Otro"],
+  ],
+  tamanho: [
+    ["Pequena (até 10 cm)", "Pequena (até 10 cm)", "Small (up to 10 cm)", "Pequeño (hasta 10 cm)"],
+    ["Média (10 a 20 cm)", "Média (10 a 20 cm)", "Medium (10 to 20 cm)", "Mediano (10 a 20 cm)"],
+    ["Grande (20 a 30 cm)", "Grande (20 a 30 cm)", "Large (20 to 30 cm)", "Grande (20 a 30 cm)"],
+    ["Fechamento (braço, perna, costas)", "Fechamento (braço, perna, costas)", "Full piece (sleeve, leg, back)", "Pieza completa (brazo, pierna, espalda)"],
+    ["Não sei", "Não sei ainda", "Not sure yet", "Aún no lo sé"],
+  ],
+  estilo: [
+    ["Neotradicional colorido", "Neotradicional colorido", "Colorful neo-traditional", "Neotradicional a color"],
+    ["Realismo colorido", "Realismo colorido", "Color realism", "Realismo a color"],
+    ["Cobertura / reforma", "Cobertura / reforma de tatuagem antiga", "Cover-up / rework of an old tattoo", "Cobertura / retoque de tatuaje antiguo"],
+    ["Preto e cinza", "Preto e cinza", "Black and grey", "Negro y gris"],
+    ["Traço fino / delicada", "Traço fino / delicada", "Fine line / delicate", "Línea fina / delicado"],
+    ["Não sei", "Não sei, quero ajuda", "Not sure, I'd like help", "No lo sé, quiero ayuda"],
+  ],
+  orcamento: [
+    ["Até R$1.200", "Até R$1.200", "Up to R$1,200", "Hasta R$1.200"],
+    ["R$1.200 a R$2.000", "R$1.200 a R$2.000", "R$1,200 to R$2,000", "R$1.200 a R$2.000"],
+    ["R$2.000 a R$3.500", "R$2.000 a R$3.500", "R$2,000 to R$3,500", "R$2.000 a R$3.500"],
+    ["Acima de R$3.500", "Acima de R$3.500", "Over R$3,500", "Más de R$3.500"],
+    ["Ainda não sei", "Ainda não sei", "Not sure yet", "Aún no lo sé"],
+  ],
+};
+const IDX = { pt: 1, en: 2, es: 3 };
+
 /* ============ TEXTOS (PT / EN / ES) ============
    "t" = conteúdo de elementos com data-t; "a" = atributos de elementos com data-a. */
 const TXT = {
@@ -468,7 +538,7 @@ const TXT = {
     desc: "Tatuagem neotradicional colorida no Méier, Rio de Janeiro. Conheça o trabalho da tatuadora Joana Chung, veja o portfólio e solicite seu orçamento pelo WhatsApp.",
     msg: "Olá, vim pelo site do Joana Chung e quero fazer minha tatuagem!",
     rev: { tempo: (n) => n >= 24 ? `há ${Math.floor(n / 12)} anos` : n >= 12 ? "há um ano" : `há ${n} ${n === 1 ? "mês" : "meses"}`, mais: "Ler mais", menos: "Ler menos", googleAria: "Avaliação do Google", starsAria: "5 de 5 estrelas", foto: "Foto enviada pelo cliente na avaliação" },
-    form: { nome: "Nome", tel: "Telefone", errNome: "Digite seu nome.", errTel: "Digite um telefone válido com DDD.", ok: "Recebemos seu contato! Continue a conversa no WhatsApp que acabou de abrir." },
+    form: { escolha: "Selecione", errNome: "Digite seu nome.", errTel: "Digite um WhatsApp válido com DDD.", errSel: "Escolha uma opção.", ok: "Recebemos seu pedido! Continue a conversa no WhatsApp que acabou de abrir.", msg: { titulo: "Olá, Joana! Vim pelo site e quero um orçamento:", nome: "Nome", tel: "WhatsApp", local: "Local do corpo", tamanho: "Tamanho", estilo: "Estilo", orcamento: "Orçamento", ideia: "Ideia" } },
     ampliar: "Ampliar: ",
     marquee: ["NEOTRADICIONAL", "COLORIDO", "CORES VIVAS", "TRAÇO MARCANTE", "PROJETOS EXCLUSIVOS", "MÉIER • RJ"],
     estilos: [
@@ -500,7 +570,7 @@ const TXT = {
     desc: "Colorful neo-traditional tattoos in Méier, Rio de Janeiro. Discover the work of tattoo artist Joana Chung, browse the portfolio and request your quote on WhatsApp.",
     msg: "Hi, I came from Joana Chung's website and I'd like to get a tattoo!",
     rev: { tempo: (n) => n >= 24 ? `${Math.floor(n / 12)} years ago` : n >= 12 ? "a year ago" : `${n} month${n === 1 ? "" : "s"} ago`, mais: "Read more", menos: "Read less", googleAria: "Google review", starsAria: "5 out of 5 stars", foto: "Photo posted by the client with the review" },
-    form: { nome: "Name", tel: "Phone", errNome: "Please enter your name.", errTel: "Please enter a valid phone number with area code.", ok: "We got your details! Continue the conversation in the WhatsApp chat that just opened." },
+    form: { escolha: "Select", errNome: "Please enter your name.", errTel: "Please enter a valid WhatsApp number with area code.", errSel: "Please choose an option.", ok: "We got your request! Continue the conversation in the WhatsApp chat that just opened.", msg: { titulo: "Hi Joana! I came from your website and I'd like a quote:", nome: "Name", tel: "WhatsApp", local: "Body placement", tamanho: "Size", estilo: "Style", orcamento: "Budget", ideia: "Idea" } },
     ampliar: "Enlarge: ",
     marquee: ["NEO-TRADITIONAL", "COLORFUL", "VIVID COLORS", "BOLD LINES", "CUSTOM PROJECTS", "MÉIER • RIO"],
     estilos: [
@@ -536,14 +606,14 @@ const TXT = {
       orcTitulo: "What is the average price of a tattoo with Joana Chung?",
       orcTexto: 'A tattoo with <strong>Joana Chung</strong> costs on average <strong class="nw">R$1,200 to R$3,500</strong> (Brazilian reais) <strong>per session</strong>.',
       orcSub: "Request your quote by signing up below",
-      fNome: "Name", fTel: "Phone / WhatsApp",
+      fNome: "Your name", fTel: "Your WhatsApp", fLocal: "Body placement", fTamanho: "Approximate size", fEstilo: "Tattoo style", fOrcamento: "What is your budget for this tattoo?", fIdeia: "Tattoo idea",
       locTitulo: "Find us", locAviso: "Private studio. Visits by appointment only.", locVerMapa: "View on Google Maps", orcBotao: "Get my quote", direitos: "All rights reserved.",
     },
     a: {
       langAria: "Language", heroAlt: "Joana Chung smiling in the studio, holding four bronze mermaid sculptures",
       projetos: "Recent projects", projAnt: "Previous project", projProx: "Next project", portfolio: "Portfolio", avAria: "Client reviews", avAnt: "Previous review", avProx: "Next review",
       aboutAlt: "Joana Chung in a plaid cap and glasses, hands together in front of her face, showing the rose tattoo on her hand",
-      igAria: "Joana Chung's Instagram", fNomePh: "Your full name", lbAria: "Enlarged photo", lbFechar: "Close", lbAnt: "Previous photo", lbProx: "Next photo",
+      igAria: "Joana Chung's Instagram", fNomePh: "What should I call you?", fIdeiaPh: "Tell me what you have in mind: theme, references, meaning...", lbAria: "Enlarged photo", lbFechar: "Close", lbAnt: "Previous photo", lbProx: "Next photo",
     },
   },
   es: {
@@ -551,7 +621,7 @@ const TXT = {
     desc: "Tatuajes neotradicionales a color en Méier, Río de Janeiro. Conoce el trabajo de la tatuadora Joana Chung, mira el portafolio y solicita tu presupuesto por WhatsApp.",
     msg: "¡Hola! Vengo del sitio web de Joana Chung y quiero hacerme un tatuaje.",
     rev: { tempo: (n) => n >= 24 ? `hace ${Math.floor(n / 12)} años` : n >= 12 ? "hace un año" : `hace ${n} ${n === 1 ? "mes" : "meses"}`, mais: "Leer más", menos: "Leer menos", googleAria: "Reseña de Google", starsAria: "5 de 5 estrellas", foto: "Foto enviada por el cliente en la reseña" },
-    form: { nome: "Nombre", tel: "Teléfono", errNome: "Escribe tu nombre.", errTel: "Escribe un teléfono válido con código de área.", ok: "¡Recibimos tus datos! Continúa la conversación en el WhatsApp que se acaba de abrir." },
+    form: { escolha: "Selecciona", errNome: "Escribe tu nombre.", errTel: "Escribe un WhatsApp válido con código de área.", errSel: "Elige una opción.", ok: "¡Recibimos tu solicitud! Continúa la conversación en el WhatsApp que se acaba de abrir.", msg: { titulo: "¡Hola, Joana! Vengo de tu sitio web y quiero un presupuesto:", nome: "Nombre", tel: "WhatsApp", local: "Zona del cuerpo", tamanho: "Tamaño", estilo: "Estilo", orcamento: "Presupuesto", ideia: "Idea" } },
     ampliar: "Ampliar: ",
     marquee: ["NEOTRADICIONAL", "A COLOR", "COLORES VIVOS", "TRAZO MARCADO", "PROYECTOS EXCLUSIVOS", "MÉIER • RÍO"],
     estilos: [
@@ -587,14 +657,14 @@ const TXT = {
       orcTitulo: "¿Cuál es el precio promedio de un tatuaje con Joana Chung?",
       orcTexto: 'Un tatuaje con <strong>Joana Chung</strong> cuesta en promedio <strong class="nw">R$1.200 a R$3.500</strong> (reales brasileños) <strong>por sesión</strong>.',
       orcSub: "Solicita tu presupuesto registrándote abajo",
-      fNome: "Nombre", fTel: "Teléfono / WhatsApp",
+      fNome: "Tu nombre", fTel: "Tu WhatsApp", fLocal: "Zona del cuerpo", fTamanho: "Tamaño aproximado", fEstilo: "Estilo del tatuaje", fOrcamento: "¿Cuál es tu presupuesto para este tatuaje?", fIdeia: "Idea del tatuaje",
       locTitulo: "Dónde estamos", locAviso: "Estudio privado. Atención solo con cita previa.", locVerMapa: "Ver en Google Maps", orcBotao: "Quiero recibir mi presupuesto", direitos: "Todos los derechos reservados.",
     },
     a: {
       langAria: "Idioma", heroAlt: "Joana Chung sonriendo en el estudio, sosteniendo cuatro esculturas de sirena en bronce",
       projetos: "Proyectos recientes", projAnt: "Proyecto anterior", projProx: "Siguiente proyecto", portfolio: "Portafolio", avAria: "Reseñas de clientes", avAnt: "Reseña anterior", avProx: "Siguiente reseña",
       aboutAlt: "Joana Chung con boina a cuadros y gafas, con las manos juntas frente al rostro, mostrando el tatuaje de rosa en la mano",
-      igAria: "Instagram de Joana Chung", fNomePh: "Tu nombre completo", lbAria: "Foto ampliada", lbFechar: "Cerrar", lbAnt: "Foto anterior", lbProx: "Foto siguiente",
+      igAria: "Instagram de Joana Chung", fNomePh: "¿Cómo te llamo?", fIdeiaPh: "Cuéntame lo que imaginas: tema, referencias, significado...", lbAria: "Foto ampliada", lbFechar: "Cerrar", lbAnt: "Foto anterior", lbProx: "Foto siguiente",
     },
   },
 };
@@ -625,6 +695,15 @@ function renderGrid() {
     `<button type="button" class="pf" data-i="${i}" aria-label="${esc(L.ampliar + L.portfolio[i])}">${photo(src, L.portfolio[i], "(min-width: 768px) 23rem, 50vw")}</button>`).join("");
 }
 
+function renderOpcoes(code) {
+  const i = IDX[code] || 1;
+  document.querySelectorAll("select[data-opts]").forEach((s) => {
+    const atual = s.value;
+    s.innerHTML = `<option value="" disabled${atual ? "" : " selected"}>${esc(L.form.escolha)}</option>` +
+      OPCOES[s.dataset.opts].map((o) => `<option value="${esc(o[0])}"${o[0] === atual ? " selected" : ""}>${esc(o[i])}</option>`).join("");
+  });
+}
+
 /* --- idiomas --- */
 document.querySelectorAll("[data-t]").forEach((el) => { TXT.pt.t[el.dataset.t] = el.innerHTML; });
 document.querySelectorAll("[data-a]").forEach((el) => { const [attr, k] = el.dataset.a.split(":"); TXT.pt.a[k] = el.getAttribute(attr); });
@@ -638,7 +717,7 @@ function setLang(code, first) {
   document.querySelectorAll("[data-a]").forEach((el) => { const [attr, k] = el.dataset.a.split(":"); el.setAttribute(attr, L.a[k] ?? TXT.pt.a[k]); });
   document.querySelectorAll(".lang button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === code)));
   document.querySelectorAll(".js-wa").forEach((a) => { a.href = `${site.whatsapp}?text=${encodeURIComponent(L.msg)}`; });
-  renderMarquee(); renderReviews();
+  renderMarquee(); renderReviews(); renderOpcoes(code);
   if (first) { renderCarousel(); renderGrid(); return; }
   /* carrossel e grade: só troca textos, sem recriar (não perde posição) */
   document.querySelectorAll("#car-track .style-card").forEach((c, i) => {
@@ -750,9 +829,10 @@ $("reviews").addEventListener("click", (e) => {
   io.observe(box);
 })();
 
-/* --- formulário: nome + telefone (máscara BR) e envio pelo WhatsApp --- */
+/* --- formulário: nome, WhatsApp (máscara BR), local, tamanho, estilo, orçamento e ideia; envio pelo WhatsApp --- */
 (function () {
-  const form = $("lead-form"), nome = $("f-nome"), tel = $("f-tel");
+  const form = $("lead-form"), nome = $("f-nome"), tel = $("f-tel"), ideia = $("f-ideia");
+  const sels = ["local", "tamanho", "estilo", "orcamento"].map((k) => $("f-" + k));
   /* (21) 3456-7890 para fixo, (21) 97472-2394 para celular */
   function mask(v) {
     const d = v.replace(/\D/g, "").slice(0, 11);
@@ -765,24 +845,34 @@ $("reviews").addEventListener("click", (e) => {
   const setErr = (input, msg) => { input.setAttribute("aria-invalid", msg ? "true" : "false"); $(input.getAttribute("aria-describedby")).textContent = msg; };
   tel.addEventListener("input", () => { tel.value = mask(tel.value); if (tel.getAttribute("aria-invalid") === "true" && telOk(tel.value)) setErr(tel, ""); });
   nome.addEventListener("input", () => { if (nome.value.trim().length >= 2) setErr(nome, ""); });
+  sels.forEach((s) => s.addEventListener("change", () => { if (s.value) setErr(s, ""); }));
+  /* rótulo da opção no idioma da página (o valor enviado fica em português) */
+  const rotulo = (s) => (s.selectedOptions[0] || {}).textContent || s.value;
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const okN = nome.value.trim().length >= 2, okT = telOk(tel.value);
     setErr(nome, okN ? "" : L.form.errNome); setErr(tel, okT ? "" : L.form.errTel);
+    sels.forEach((s) => setErr(s, s.value ? "" : L.form.errSel));
     if (!okN) return nome.focus();
     if (!okT) return tel.focus();
+    const vazio = sels.find((s) => !s.value); if (vazio) return vazio.focus();
     const digits = tel.value.replace(/\D/g, "");
     /* envia o cadastro para o Make (formato de formulário, não precisa de CORS) */
     const dados = new URLSearchParams({
       nome: nome.value.trim(), telefone: tel.value, telefone_whatsapp: "55" + digits,
+      local: sels[0].value, tamanho: sels[1].value, estilo: sels[2].value, orcamento: sels[3].value, ideia: ideia.value.trim(),
       idioma: document.documentElement.lang, pagina: location.href,
       /* data e hora de Brasília: 23/10/2026 16:29:05 */
       data: new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo", day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }).replace(",", ""),
     });
     if (site.webhook) try { fetch(site.webhook, { method: "POST", body: dados, mode: "no-cors", keepalive: true }).catch(() => {}); } catch (_) {}
     $("form-ok").textContent = L.form.ok; $("form-ok").hidden = false;
-    /* nome e telefone vão só para o webhook; o WhatsApp abre apenas com a mensagem padrão */
-    const texto = L.msg;
+    /* o pedido vai escrito na mensagem do WhatsApp (assim nada se perde mesmo sem webhook) */
+    const m = L.form.msg;
+    const linhas = [m.titulo, "", `*${m.nome}:* ${nome.value.trim()}`, `*${m.tel}:* ${tel.value}`,
+      `*${m.local}:* ${rotulo(sels[0])}`, `*${m.tamanho}:* ${rotulo(sels[1])}`, `*${m.estilo}:* ${rotulo(sels[2])}`, `*${m.orcamento}:* ${rotulo(sels[3])}`];
+    if (ideia.value.trim()) linhas.push(`*${m.ideia}:* ${ideia.value.trim()}`);
+    const texto = linhas.join("\n");
     window.open(`${site.whatsapp}?text=${encodeURIComponent(texto)}`, "_blank", "noopener");
   });
 })();
