@@ -9,14 +9,14 @@
 <meta property="og:description" content="Tatuagem neotradicional colorida com Joana Chung, no Méier, RJ. Orçamento pelo WhatsApp.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:image" content="assets/tatuagem-meier-rj-tatuadora-joana-chung.webp">
+<meta property="og:image" content="assets/tatuagem-meier-rj-tatuadora-joana-chung-maquina-de-tatuagem.webp">
 <meta name="geo.region" content="BR-RJ">
 <meta name="geo.placename" content="Méier, Rio de Janeiro">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TattooParlor", "name": "Joana Chung Tattoo", "description": "Tatuagem neotradicional colorida no Méier, Rio de Janeiro.", "image": "assets/tatuagem-meier-rj-tatuadora-joana-chung.webp", "telephone": "+55 21 99380-8510", "address": {"@type": "PostalAddress", "streetAddress": "R. Silva Rabêlo, 43 - Sl 602", "addressLocality": "Rio de Janeiro", "addressRegion": "RJ", "postalCode": "20735-100", "addressCountry": "BR"}, "areaServed": ["Méier", "Rio de Janeiro"], "hasMap": "https://maps.app.goo.gl/i4umUKo7Z147XV6P9", "sameAs": ["https://www.instagram.com/joana_chung/"], "founder": {"@type": "Person", "name": "Joana Chung", "jobTitle": "Tatuadora"}}</script>
-<meta name="theme-color" content="#0b0b0b">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TattooParlor", "name": "Joana Chung Tattoo", "description": "Tatuagem neotradicional colorida no Méier, Rio de Janeiro.", "image": "assets/tatuagem-meier-rj-tatuadora-joana-chung-maquina-de-tatuagem.webp", "telephone": "+55 21 99380-8510", "address": {"@type": "PostalAddress", "streetAddress": "R. Silva Rabêlo, 43 - Sl 602", "addressLocality": "Rio de Janeiro", "addressRegion": "RJ", "postalCode": "20735-100", "addressCountry": "BR"}, "areaServed": ["Méier", "Rio de Janeiro"], "hasMap": "https://maps.app.goo.gl/i4umUKo7Z147XV6P9", "sameAs": ["https://www.instagram.com/joana_chung/"], "founder": {"@type": "Person", "name": "Joana Chung", "jobTitle": "Tatuadora"}}</script>
+<meta name="theme-color" content="#faf5ef">
 <link rel="icon" type="image/png" href="favicon.png?v=4">
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=4">
-<link rel="preload" as="image" href="assets/tatuagem-meier-rj-tatuadora-joana-chung.webp" imagesrcset="assets/tatuagem-meier-rj-tatuadora-joana-chung.webp 500w" imagesizes="(min-width: 768px) 56vw, 100vw" fetchpriority="high">
+<link rel="preload" as="image" href="assets/tatuagem-meier-rj-tatuadora-joana-chung-maquina-de-tatuagem.webp" imagesrcset="assets/tatuagem-meier-rj-tatuadora-joana-chung-maquina-de-tatuagem-800.webp 800w, assets/tatuagem-meier-rj-tatuadora-joana-chung-maquina-de-tatuagem.webp 1400w" imagesizes="(min-width: 768px) 56vw, 100vw" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- fontes carregadas sem bloquear a primeira pintura da página -->
@@ -26,16 +26,20 @@
 :root {
   color-scheme: light;
   --bg: #ffffff;
-  --fg: #1a1a1a;
-  --ink: #0b0b0b;
-  --soft: #faf8f4;
-  --tint: #f2eee6;
-  --muted: #5c5c5c;
-  --accent: #8a6a2a;
-  --gold: #d6b25e;
-  --line: #e2ddd2;
-  --hero-fg: #ffffff;
-  --hero-muted: #d9d9d9;
+  /* paleta: branco, creme e rosé suave */
+  --fg: #2e2523;
+  --cream: #faf5ef;
+  --rose: #e9c7c1;
+  --rose-soft: #f7e8e4;
+  --soft: var(--cream);
+  --tint: var(--rose-soft);
+  --muted: #6b5a56;
+  --accent: #8e4a46; /* rosé escuro: contraste 5:1 sobre branco, creme e rosé */
+  --gold: #d9a441; /* estrelas */
+  --line: #ecdcd5;
+  --field-line: #e3cdc6;
+  --hero-fg: var(--fg);
+  --hero-muted: #5d4c49;
   --wa: #15803d; /* verde com contraste 5:1 para o texto branco */
   --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --body: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -62,19 +66,19 @@ img { max-width: 100%; display: block; }
 .icon { width: 1rem; height: 1rem; flex: none; }
 
 /* ---------- HERO ---------- */
-.hero { position: relative; overflow: hidden; background: var(--ink); color: var(--hero-fg); }
+.hero { position: relative; overflow: hidden; background: var(--cream); color: var(--hero-fg); }
 .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 45% 30%; }
-.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgb(10 10 10 / .92) 0, rgb(10 10 10 / .78) 34%, rgb(10 10 10 / .25) 58%, rgb(10 10 10 / .05) 80%); pointer-events: none; }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgb(250 245 239 / .97) 0, rgb(250 245 239 / .88) 34%, rgb(250 245 239 / .3) 58%, rgb(250 245 239 / 0) 78%); pointer-events: none; }
 .hero-inner { position: relative; z-index: 1; min-height: 78svh; display: flex; align-items: flex-end; justify-content: center; padding-block: 5rem 3.5rem; }
 .hero-copy { max-width: 36rem; text-align: center; }
-.brand { margin-bottom: 1rem; font-size: .75rem; font-weight: 500; letter-spacing: .35em; text-transform: uppercase; color: var(--gold); }
+.brand { margin-bottom: 1rem; font-size: .75rem; font-weight: 500; letter-spacing: .35em; text-transform: uppercase; color: var(--accent); }
 .hero h1 { font-size: clamp(3rem, 1.6rem + 4.4vw, 5.25rem); line-height: 1.05; }
-.hero-sub { text-shadow: 0 1px 8px rgb(0 0 0 / .5); margin: 1.5rem auto 0; max-width: 28rem; font-size: clamp(1rem, .95rem + .25vw, 1.125rem); line-height: 1.65; color: var(--hero-muted); }
+.hero-sub { text-shadow: 0 1px 10px rgb(250 245 239 / .8); margin: 1.5rem auto 0; max-width: 28rem; font-size: clamp(1rem, .95rem + .25vw, 1.125rem); line-height: 1.65; color: var(--hero-muted); }
 @media (min-width: 768px) { .hero-inner { min-height: 84svh; align-items: center; padding-block: 6rem; } }
 /* tablet e PC: foto do lado esquerdo, texto do lado direito */
 @media (min-width: 768px) {
   .hero-img { right: auto; width: 56%; object-position: 45% 25%; }
-  .hero::after { background: linear-gradient(270deg, var(--ink) 0 45%, rgb(11 11 11 / .6) 50%, rgb(11 11 11 / .15) 58%, transparent 66%); }
+  .hero::after { background: linear-gradient(270deg, var(--cream) 0 45%, rgb(250 245 239 / .65) 50%, rgb(250 245 239 / .15) 58%, transparent 66%); }
   .hero-inner { justify-content: flex-end; }
   .hero-copy { text-align: left; width: 44%; max-width: 31rem; }
   .hero-sub { margin-left: 0; }
@@ -86,19 +90,19 @@ img { max-width: 100%; display: block; }
 @media (min-width: 768px) { .lang { top: 1.25rem; right: 1.5rem; } }
 .lang button {
   display: inline-flex; align-items: center; gap: .4rem; padding: .35rem .6rem .35rem .45rem; cursor: pointer;
-  border: 1px solid rgb(255 255 255 / .22); border-radius: 999px; background: rgb(10 10 10 / .55); color: var(--hero-fg);
+  border: 1px solid var(--line); border-radius: 999px; background: rgb(255 255 255 / .8); color: var(--fg);
   font-size: .72rem; font-weight: 600; letter-spacing: .08em; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
   transition: border-color .2s, color .2s;
 }
-.lang button:hover { border-color: rgb(214 178 94 / .7); }
-.lang button[aria-pressed="true"] { border-color: var(--gold); color: var(--gold); }
-.lang svg { width: 1.3rem; height: .875rem; border-radius: 2px; box-shadow: 0 0 0 1px rgb(255 255 255 / .25); }
+.lang button:hover { border-color: var(--rose); }
+.lang button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.lang svg { width: 1.3rem; height: .875rem; border-radius: 2px; box-shadow: 0 0 0 1px rgb(0 0 0 / .12); }
 
 /* letreiro */
-.marquee { position: relative; z-index: 1; display: flex; overflow: hidden; padding-block: .75rem; background: var(--ink); border-block: 1px solid rgb(214 178 94 / .35); }
+.marquee { position: relative; z-index: 1; display: flex; overflow: hidden; padding-block: .75rem; background: var(--rose-soft); border-block: 1px solid var(--rose); }
 .marquee-track { display: flex; flex: none; gap: 2rem; padding-right: 2rem; white-space: nowrap; animation: marquee 30s linear infinite; }
-.marquee span { display: inline-flex; gap: 2rem; font-size: .75rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: var(--hero-muted); }
-.marquee b { color: var(--gold); font-weight: 400; }
+.marquee span { display: inline-flex; gap: 2rem; font-size: .75rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: #6e4744; }
+.marquee b { color: var(--accent); font-weight: 400; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 /* ---------- FOTOS ---------- */
@@ -162,7 +166,7 @@ img { max-width: 100%; display: block; }
 @media (min-width: 640px) { .review { width: calc(50% - .5rem); } }
 @media (min-width: 1024px) { .review { width: calc(33.333% - .667rem); } }
 .review-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: .75rem; }
-.avatar { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 999px; background: var(--ink); color: var(--gold); font-size: .875rem; font-weight: 600; text-transform: uppercase; }
+.avatar { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 999px; background: var(--rose-soft); color: var(--accent); font-size: .875rem; font-weight: 600; text-transform: uppercase; }
 .review h3 { font: 500 1rem/1.3 var(--body); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .review time { display: block; margin-top: .2rem; font-size: .75rem; color: var(--muted); }
 .g-badge { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 999px; border: 1px solid var(--line); box-shadow: 0 1px 2px rgb(0 0 0 / .08); }
@@ -180,35 +184,35 @@ img { max-width: 100%; display: block; }
 .review-photo:hover img { transform: scale(1.04); }
 
 /* ---------- ORÇAMENTO ---------- */
-.quote { background: var(--ink); color: var(--hero-fg); }
-.quote .lead { color: var(--hero-muted); }
-.quote strong { color: var(--gold); font-weight: 600; }
+.quote { background: var(--rose-soft); color: var(--fg); border-top: 1px solid var(--rose); }
+.quote .lead { color: var(--muted); }
+.quote strong { color: var(--accent); font-weight: 600; }
 .quote-box { max-width: 36rem; margin: 0 auto; }
 .lead-form { margin-top: 2rem; display: grid; gap: 1rem; }
-.field label { display: block; margin-bottom: .4rem; font-size: .8rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--hero-muted); }
+.field label { display: block; margin-bottom: .4rem; font-size: .8rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .field input, .field select, .field textarea {
-  width: 100%; padding: .9rem 1.1rem; border: 1px solid rgb(255 255 255 / .2); border-radius: .6rem;
-  background: rgb(255 255 255 / .06); color: #fff; font: inherit; font-size: 1rem; transition: border-color .2s, background .2s;
+  width: 100%; padding: .9rem 1.1rem; border: 1px solid var(--field-line); border-radius: .6rem;
+  background: #fff; color: var(--fg); font: inherit; font-size: 1rem; transition: border-color .2s, background .2s;
 }
-.field input::placeholder, .field textarea::placeholder { color: rgb(255 255 255 / .4); }
-.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--gold); background-color: rgb(255 255 255 / .09); }
-.field [aria-invalid="true"] { border-color: #ef6b6b; }
+.field input::placeholder, .field textarea::placeholder { color: #a39090; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--accent); background-color: #fff; box-shadow: 0 0 0 3px rgb(142 74 70 / .12); }
+.field [aria-invalid="true"] { border-color: #c0392b; }
 .field select {
   appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 2.75rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d6b25e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238e4a46' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: right 1rem center; background-size: 1.1rem;
 }
-.field select:invalid { color: rgb(255 255 255 / .4); }
-.field select option { background: #1a1a1a; color: #fff; }
+.field select:invalid { color: #a39090; }
+.field select option { background: #fff; color: var(--fg); }
 .field textarea { min-height: 7rem; resize: vertical; line-height: 1.5; }
 .field-row { display: grid; gap: 1rem; }
 @media (min-width: 520px) { .field-row { grid-template-columns: 1fr 1fr; } }
-.field-err { margin-top: .35rem; font-size: .8rem; color: #ef9a9a; }
+.field-err { margin-top: .35rem; font-size: .8rem; color: #b3261e; }
 .field-err:empty { display: none; }
-.arrow-down { display: inline-block; width: 1rem; height: 1rem; margin-left: .2rem; vertical-align: -.2em; color: var(--gold); animation: nudge 1.6s ease-in-out infinite; }
+.arrow-down { display: inline-block; width: 1rem; height: 1rem; margin-left: .2rem; vertical-align: -.2em; color: var(--accent); animation: nudge 1.6s ease-in-out infinite; }
 @keyframes nudge { 50% { transform: translateY(3px); } }
 @media (prefers-reduced-motion: reduce) { .arrow-down { animation: none; } }
-.form-ok { margin: 0; padding: .85rem 1rem; border: 1px solid rgb(214 178 94 / .45); border-radius: .6rem; color: var(--gold); font-size: .875rem; text-align: center; }
+.form-ok { margin: 0; padding: .85rem 1rem; border: 1px solid var(--rose); border-radius: .6rem; background: #fff; color: var(--accent); font-size: .875rem; text-align: center; }
 .lead-form .btn-wa { margin-top: .5rem; border: 0; cursor: pointer; font-family: inherit; }
 .btn-wa {
   display: flex; align-items: center; justify-content: center; gap: .75rem; width: 100%; margin-top: 2rem; padding: 1.1rem 1.5rem;
@@ -235,19 +239,19 @@ img { max-width: 100%; display: block; }
 
 /* ---------- RODAPÉ ---------- */
 .foot-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem 1.25rem; font-size: .8rem; }
-.foot-links a { display: inline-flex; align-items: center; gap: .4rem; color: var(--hero-muted); text-decoration: none; transition: color .2s; }
-.foot-links a:hover { color: var(--gold); }
+.foot-links a { display: inline-flex; align-items: center; gap: .4rem; color: var(--muted); text-decoration: none; transition: color .2s; }
+.foot-links a:hover { color: var(--accent); }
 .foot-links svg { width: 1rem; height: 1rem; }
-footer { background: var(--ink); color: var(--hero-fg); border-top: 1px solid rgb(214 178 94 / .3); }
+footer { background: var(--cream); color: var(--fg); border-top: 1px solid var(--line); }
 .foot { padding-block: 1.75rem; display: flex; flex-direction: column; align-items: center; gap: .35rem; text-align: center; }
 .foot-row { display: flex; align-items: center; gap: .75rem; }
 .foot > * + * { margin-top: .35rem; }
 .foot-logo { width: min(15rem, 70vw); height: auto; margin-bottom: .5rem; }
 .foot-brand { font-family: var(--display); font-size: 1.15rem; }
-.foot-ig { display: inline-grid; color: var(--hero-muted); transition: color .2s; }
-.foot-ig:hover { color: var(--gold); }
+.foot-ig { display: inline-grid; color: var(--muted); transition: color .2s; }
+.foot-ig:hover { color: var(--accent); }
 .foot-ig svg { width: 1.1rem; height: 1.1rem; }
-.copy { font-size: .7rem; color: #a8a8a8; }
+.copy { font-size: .7rem; color: #7d6b67; }
 
 /* ---------- LIGHTBOX ---------- */
 .lightbox { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 1rem; background: rgb(8 8 8 / .94); }
@@ -291,7 +295,7 @@ footer { background: var(--ink); color: var(--hero-fg); border-top: 1px solid rg
     <button type="button" data-lang="en" aria-pressed="false" title="English"><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#B22234"/><g fill="#fff"><rect y="1.54" width="30" height="1.54"/><rect y="4.62" width="30" height="1.54"/><rect y="7.69" width="30" height="1.54"/><rect y="10.77" width="30" height="1.54"/><rect y="13.85" width="30" height="1.54"/><rect y="16.92" width="30" height="1.54"/></g><rect width="12" height="10.77" fill="#3C3B6E"/></svg>EN</button>
     <button type="button" data-lang="es" aria-pressed="false" title="Español"><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#AA151B"/><rect y="5" width="30" height="10" fill="#F1BF00"/></svg>ES</button>
   </nav>
-  <img class="hero-img" src="assets/tatuagem-meier-rj-tatuadora-joana-chung.webp" srcset="assets/tatuagem-meier-rj-tatuadora-joana-chung.webp 500w" sizes="(min-width: 768px) 56vw, 100vw" width="500" height="666" fetchpriority="high" decoding="async" data-a="alt:heroAlt" alt="Joana Chung sorrindo no estúdio, segurando quatro esculturas de sereia em bronze">
+  <img class="hero-img" src="assets/tatuagem-meier-rj-tatuadora-joana-chung-maquina-de-tatuagem.webp" srcset="assets/tatuagem-meier-rj-tatuadora-joana-chung-maquina-de-tatuagem-800.webp 800w, assets/tatuagem-meier-rj-tatuadora-joana-chung-maquina-de-tatuagem.webp 1400w" sizes="(min-width: 768px) 56vw, 100vw" width="1400" height="1865" fetchpriority="high" decoding="async" data-a="alt:heroAlt" alt="Joana Chung, tatuadora no Méier, RJ, sorrindo e segurando uma máquina de tatuagem dourada, com os braços tatuados em cores">
   <div class="wrap hero-inner">
     <div class="hero-copy">
       <p class="brand">Joana Chung Tattoo</p>
@@ -423,7 +427,7 @@ footer { background: var(--ink); color: var(--hero-fg); border-top: 1px solid rg
 
 <footer>
   <div class="wrap foot">
-    <img class="foot-logo" src="assets/tatuagem-meier-rj-joana-chung-logo.png" width="800" height="191" alt="Logo Joana C. Duncan Tatuadora" loading="lazy" decoding="async">
+    <img class="foot-logo" src="assets/tatuagem-meier-rj-joana-chung-logo-rose.png" width="800" height="191" alt="Logo Joana C. Duncan Tatuadora" loading="lazy" decoding="async">
     <div class="foot-row">
       <span class="foot-links"><a href="https://www.instagram.com/joana_chung/" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-ig"/></svg>@joana_chung</a></span>
     </div>
@@ -610,7 +614,7 @@ const TXT = {
       locTitulo: "Find us", locAviso: "Private studio. Visits by appointment only.", locVerMapa: "View on Google Maps", orcBotao: "Get my quote", direitos: "All rights reserved.",
     },
     a: {
-      langAria: "Language", heroAlt: "Joana Chung smiling in the studio, holding four bronze mermaid sculptures",
+      langAria: "Language", heroAlt: "Joana Chung, tattoo artist in Méier, Rio de Janeiro, smiling and holding a gold tattoo machine, with colorful tattooed arms",
       projetos: "Recent projects", projAnt: "Previous project", projProx: "Next project", portfolio: "Portfolio", avAria: "Client reviews", avAnt: "Previous review", avProx: "Next review",
       aboutAlt: "Joana Chung in a plaid cap and glasses, hands together in front of her face, showing the rose tattoo on her hand",
       igAria: "Joana Chung's Instagram", fNomePh: "What should I call you?", fIdeiaPh: "Tell me what you have in mind: theme, references, meaning...", lbAria: "Enlarged photo", lbFechar: "Close", lbAnt: "Previous photo", lbProx: "Next photo",
@@ -661,7 +665,7 @@ const TXT = {
       locTitulo: "Dónde estamos", locAviso: "Estudio privado. Atención solo con cita previa.", locVerMapa: "Ver en Google Maps", orcBotao: "Quiero recibir mi presupuesto", direitos: "Todos los derechos reservados.",
     },
     a: {
-      langAria: "Idioma", heroAlt: "Joana Chung sonriendo en el estudio, sosteniendo cuatro esculturas de sirena en bronce",
+      langAria: "Idioma", heroAlt: "Joana Chung, tatuadora en Méier, Río de Janeiro, sonriendo y sosteniendo una máquina de tatuar dorada, con los brazos tatuados a color",
       projetos: "Proyectos recientes", projAnt: "Proyecto anterior", projProx: "Siguiente proyecto", portfolio: "Portafolio", avAria: "Reseñas de clientes", avAnt: "Reseña anterior", avProx: "Siguiente reseña",
       aboutAlt: "Joana Chung con boina a cuadros y gafas, con las manos juntas frente al rostro, mostrando el tatuaje de rosa en la mano",
       igAria: "Instagram de Joana Chung", fNomePh: "¿Cómo te llamo?", fIdeiaPh: "Cuéntame lo que imaginas: tema, referencias, significado...", lbAria: "Foto ampliada", lbFechar: "Cerrar", lbAnt: "Foto anterior", lbProx: "Foto siguiente",
