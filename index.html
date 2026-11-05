@@ -891,6 +891,8 @@ $("reviews").addEventListener("click", (e) => {
     });
     if (site.webhook) try { fetch(site.webhook, { method: "POST", body: dados, mode: "no-cors", keepalive: true }).catch(() => {}); } catch (_) {}
     $("form-ok").textContent = L.form.ok; $("form-ok").hidden = false;
+    /* Meta Pixel: evento Lead, uma vez por envio válido (só chega aqui depois de toda a validação) */
+    try { if (typeof fbq === "function") fbq('track', 'Lead'); } catch (_) {}
     /* o pedido vai escrito na mensagem do WhatsApp (assim nada se perde mesmo sem webhook) */
     const m = L.form.msg;
     const linhas = [m.titulo, "", `*${m.nome}:* ${nome.value.trim()}`, `*${m.tel}:* ${tel.value}`,
